@@ -1,0 +1,10 @@
+PODS:
+  - EarlGrey (1.0.0)
+
+DEPENDENCIES:
+  - EarlGrey
+
+SPEC CHECKSUMS:
+  EarlGrey: d23692dedb9759a00c0e316ca015814b3fc528f1
+
+COCOAPODS: 0.39.0

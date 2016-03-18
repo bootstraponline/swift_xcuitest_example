@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		32AF94FCD7DFFC6D0750B02C /* libPods-ExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B04ABFAFAE14D9CE29C6DF47 /* libPods-ExampleTests.a */; };
 		9CEFB947466F2C1FA04973D2 /* EarlGrey.framework in EarlGrey Copy Files */ = {isa = PBXBuildFile; fileRef = 399BD0F4F8B7F4C0221A733D /* EarlGrey.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		F92F37501C9C696E002BD034 /* EarlGrey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F92F374F1C9C696E002BD034 /* EarlGrey.swift */; };
 		F96488B91C9C51DC00548194 /* ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96488B81C9C51DC00548194 /* ExampleTests.swift */; };
 		F98C3B8B1C65354100389099 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98C3B8A1C65354100389099 /* AppDelegate.swift */; };
 		F98C3B8D1C65354100389099 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98C3B8C1C65354100389099 /* ViewController.swift */; };
@@ -54,6 +55,8 @@
 		B04ABFAFAE14D9CE29C6DF47 /* libPods-ExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C141A92D6A81882AF654CA5C /* Pods-ExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ExampleTests/Pods-ExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		CFC944D14DE6E395E32E36D0 /* Pods-ExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExampleTests/Pods-ExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F92F374E1C9C6948002BD034 /* bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bridge.h; sourceTree = "<group>"; };
+		F92F374F1C9C696E002BD034 /* EarlGrey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarlGrey.swift; sourceTree = "<group>"; };
 		F96488B61C9C51DC00548194 /* ExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F96488B81C9C51DC00548194 /* ExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleTests.swift; sourceTree = "<group>"; };
 		F96488BA1C9C51DC00548194 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -117,6 +120,8 @@
 			children = (
 				F96488B81C9C51DC00548194 /* ExampleTests.swift */,
 				F96488BA1C9C51DC00548194 /* Info.plist */,
+				F92F374E1C9C6948002BD034 /* bridge.h */,
+				F92F374F1C9C696E002BD034 /* EarlGrey.swift */,
 			);
 			path = ExampleTests;
 			sourceTree = "<group>";
@@ -349,6 +354,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F92F37501C9C696E002BD034 /* EarlGrey.swift in Sources */,
 				F96488B91C9C51DC00548194 /* ExampleTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -415,6 +421,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.ExampleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = ExampleTests/bridge.h;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Example.app/Example";
 			};
 			name = Debug;
@@ -429,6 +436,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.ExampleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = ExampleTests/bridge.h;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Example.app/Example";
 			};
 			name = Release;
