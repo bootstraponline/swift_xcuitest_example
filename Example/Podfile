@@ -2,8 +2,9 @@ PROJECT_NAME = 'Example'
 TEST_TARGET = 'ExampleTests'
 SCHEME_FILE = 'ExampleTests.xcscheme'
 
-xcodeproj 'Example'
-target 'ExampleTests', :exclusive => true do
+target TEST_TARGET do
+  project PROJECT_NAME
+  inherit! :search_paths
   pod 'EarlGrey'
 end
 
