@@ -135,7 +135,7 @@ typedef NS_ENUM(NSInteger, EGExecutionState) {
 - (BOOL)executeSyncWithTimeout:(CFTimeInterval)seconds
                          block:(GREYExecBlock)execBlock
                          error:(__strong NSError **)error {
-  __CHECK_MAIN_THREAD();
+  I_CHECK_MAIN_THREAD();
   NSParameterAssert(seconds >= 0);
 
   __block BOOL areAllResourcesIdle = NO;
@@ -175,7 +175,7 @@ typedef NS_ENUM(NSInteger, EGExecutionState) {
               break;
             }
           }
-          isAppIdle = ([[GREYAppStateTracker sharedInstance] currentState] == kGREYIdle);
+          isAppIdle = [[GREYAppStateTracker sharedInstance] isIdle];
           shouldExecuteBlock = (areAllResourcesIdle && isAppIdle);
         }
 
@@ -299,7 +299,7 @@ typedef NS_ENUM(NSInteger, EGExecutionState) {
  *  @return @c YES when all idling resources are idle, @c NO otherwise.
  */
 - (BOOL)grey_areAllResourcesIdle {
-  __CHECK_MAIN_THREAD();
+  I_CHECK_MAIN_THREAD();
   [self grey_updateBusyResources];
   return (0 == [_busyIdlingResources count]);
 }

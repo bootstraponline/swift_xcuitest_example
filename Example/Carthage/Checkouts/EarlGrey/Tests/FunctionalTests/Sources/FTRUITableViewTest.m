@@ -38,7 +38,7 @@
   for (int i = 0; i < 5; i++) {
     NSString *labelForRowToDelete = [NSString stringWithFormat:@"Row %d", i];
     [[EarlGrey selectElementWithMatcher:grey_accessibilityLabel(labelForRowToDelete)]
-        performAction:grey_swipeFastInDirection(kGREYDirectionLeft)];
+        performAction:grey_swipeSlowInDirection(kGREYDirectionLeft)];
     [[EarlGrey selectElementWithMatcher:deleteRowMatcher] performAction:grey_tap()];
     [[EarlGrey selectElementWithMatcher:grey_accessibilityLabel(labelForRowToDelete)]
         assertWithMatcher:grey_notVisible()];
@@ -161,23 +161,19 @@
                                                       descriptionBlock:describe],
                  nil);
   [[[EarlGrey selectElementWithMatcher:grey_accessibilityID(@"main_table_view")]
-      performAction:grey_swipeFastInDirection(kGREYDirectionDown)]
+      performAction:grey_swipeSlowInDirection(kGREYDirectionDown)]
       assertWithMatcher:matchers];
   [[EarlGrey selectElementWithMatcher:grey_accessibilityLabel(@"Row 1")]
       assertWithMatcher:grey_sufficientlyVisible()];
 }
 
-- (void)testHiddenElementNotProvided {
-  // Scroll down to ensure that the first element is hidden.
-  [[self scrollToCellAtIndex:40 byScrollingInAmounts:40 InDirection:kGREYDirectionDown]
-      assertWithMatcher:grey_notNil()];
-
+- (void)testHiddenTableViewRow {
   [FTRTableViewController throwErrorIfElementProviderDequeuesCellAtIndex:1];
 
   // Try to access the first element and ensure that the element provider does not provide it,
   // since it is hidden.
   NSError *err;
-  [[EarlGrey selectElementWithMatcher:grey_accessibilityLabel(@"Row 1")]
+  [[EarlGrey selectElementWithMatcher:grey_accessibilityLabel(@"Row 40")]
       assertWithMatcher:grey_interactable() error:&err];
   GREYAssertNotNil(err, @"Looking for hidden tableview cell failed to produce an error.");
   GREYAssertEqual(err.code, kGREYInteractionElementNotFoundErrorCode,

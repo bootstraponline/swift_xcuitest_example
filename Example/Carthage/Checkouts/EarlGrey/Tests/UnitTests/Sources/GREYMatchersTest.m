@@ -171,7 +171,7 @@
 - (void)testProgressIsGreaterThanMatcher {
   UILabel *label = [[UILabel alloc] init];
   UIProgressView *progressView = [[UIProgressView alloc] init];
-  id<GREYMatcher> matcher = grey_progress(HC_greaterThan(@(0.8f)));
+  id<GREYMatcher> matcher = grey_progress(grey_greaterThan(@(0.8f)));
   progressView.progress = 0.3f;
   XCTAssertFalse([matcher matches:progressView], @"Greater progress matcher should return false");
   progressView.progress = 0.9f;
@@ -182,7 +182,7 @@
 - (void)testProgressIsLessThanMatcher {
   UIView *uiview = [[UIView alloc] init];
   UIProgressView *progressView = [[UIProgressView alloc] init];
-  id<GREYMatcher> matcher = grey_progress(HC_lessThan(@(0.6f)));
+  id<GREYMatcher> matcher = grey_progress(grey_lessThan(@(0.6f)));
   progressView.progress = 0.9f;
   XCTAssertFalse([matcher matches:progressView], @"Less progress matcher should return false");
   progressView.progress = 0.2f;
@@ -193,7 +193,7 @@
 - (void)testProgressIsEqualMatcher {
   UIButton *uibutton = [[UIButton alloc] init];
   UIProgressView *progressView = [[UIProgressView alloc] init];
-  id<GREYMatcher> matcher = grey_progress(HC_equalTo(@(0.6f)));
+  id<GREYMatcher> matcher = grey_progress(grey_equalTo(@(0.6f)));
   progressView.progress = 0.9f;
   XCTAssertFalse([matcher matches:progressView], @"Equal progress matcher should return false");
   progressView.progress = 0.6f;
@@ -337,7 +337,8 @@
   testSlider.maximumValue = 100;
   testSlider.minimumValue = 0;
   testSlider.value = 3;
-  id<GREYMatcher> matcher = grey_sliderValueMatcher(HC_closeTo(3.0f, kGREYAcceptableFloatDifference));
+  id<GREYMatcher> matcher =
+      grey_sliderValueMatcher(grey_closeTo(3.0f, kGREYAcceptableFloatDifference));
   XCTAssertTrue([matcher matches:testSlider], @"Matching traits should return true");
   testSlider.value = 4;
   XCTAssertFalse([matcher matches:testSlider], @"Non-matching traits should return false");
@@ -411,6 +412,21 @@
   id<GREYMatcher> matcher = grey_enabled();
   XCTAssertFalse([matcher matches:child],
                  @"Untappable child of tappable parent should not be tappable");
+}
+
+- (void)testIsUserInteractionEnabled_isTrueForEnabledView {
+  UIView *view = [[UIView alloc] init];
+  view.userInteractionEnabled = YES;
+  id<GREYMatcher> matcher = grey_userInteractionEnabled();
+  XCTAssertTrue([matcher matches:view], @"Views with user interaction enabled should be matched");
+}
+
+- (void)testIsUserInteractionEnabled_isFalseForDisabledView {
+  UIView *view = [[UIView alloc] init];
+  view.userInteractionEnabled = NO;
+  id<GREYMatcher> matcher = grey_userInteractionEnabled();
+  XCTAssertFalse([matcher matches:view],
+                 @"Views with user interaction disabled should not be matched");
 }
 
 - (void)testLayoutMatcherWithSingleConstraint {

@@ -17,7 +17,7 @@
 #import "Matcher/GREYMatchers.h"
 
 #import <OCHamcrest/OCHamcrest.h>
-#import <tgmath.h>
+#include <tgmath.h>
 
 #import "Additions/NSString+GREYAdditions.h"
 #import "Additions/UISwitch+GREYAdditions.h"
@@ -63,6 +63,22 @@ static const double kElementSufficientlyVisiblePercentage = 0.75;
 
 + (id<GREYMatcher>)matcherForCloseTo:(double)value delta:(double)delta {
   return [[GREYHCMatcher alloc] initWithHCMatcher:HC_closeTo(value, delta)];
+}
+
++ (id<GREYMatcher>)matcherForAnything {
+  return [[GREYHCMatcher alloc] initWithHCMatcher:HC_anything()];
+}
+
++ (id<GREYMatcher>)matcherForEqualTo:(id)value {
+  return [[GREYHCMatcher alloc] initWithHCMatcher:HC_equalTo(value)];
+}
+
++ (id<GREYMatcher>)matcherForLessThan:(id)value {
+  return [[GREYHCMatcher alloc] initWithHCMatcher:HC_lessThan(value)];
+}
+
++ (id<GREYMatcher>)matcherForGreaterThan:(id)value {
+  return [[GREYHCMatcher alloc] initWithHCMatcher:HC_greaterThan(value)];
 }
 
 + (id<GREYMatcher>)matcherForAccessibilityLabel:(NSString *)label {
@@ -235,7 +251,7 @@ static const double kElementSufficientlyVisiblePercentage = 0.75;
 
 + (id<GREYMatcher>)matcherForKindOfClass:(Class)klass {
   MatchesBlock matches = ^BOOL(id element) {
-    return [HC_instanceOf(klass) matches:element];
+    return [element isKindOfClass:klass];
   };
   DescribeToBlock describe = ^void(id<GREYDescription> description) {
     [description appendText:[NSString stringWithFormat:@"kindOfClass(\"%@\")",
@@ -434,6 +450,18 @@ static const double kElementSufficientlyVisiblePercentage = 0.75;
   return grey_allOf(isEnabledMatcher, areAncestorsEnabled, nil);
 }
 
++ (id<GREYMatcher>)matcherForUserInteractionEnabled {
+  MatchesBlock matches = ^BOOL(UIView *view) {
+    return [view isUserInteractionEnabled];
+  };
+  DescribeToBlock describe = ^void(id<GREYDescription> description) {
+    [description appendText:@"userInteractionEnabled"];
+  };
+  id<GREYMatcher> matcher =
+      [[GREYElementMatcherBlock alloc] initWithMatchesBlock:matches descriptionBlock:describe];
+  return grey_allOf(grey_kindOfClass([UIView class]), matcher, nil);
+}
+
 + (id<GREYMatcher>)matcherForConstraints:(NSArray *)constraints
             toReferenceElementMatching:(id<GREYMatcher>)referenceElementMatcher {
   MatchesBlock matches = ^BOOL(id element) {
@@ -449,15 +477,15 @@ static const double kElementSufficientlyVisiblePercentage = 0.75;
     NSError *matcherError;
     NSArray *referenceElements = [interaction matchedElementsWithTimeout:0 error:&matcherError];
     if (matcherError) {
-      __GREYAssert(NO, @"Error finding element:%@", matcherError);
+      I_GREYAssert(NO, @"Error finding element:%@", matcherError);
     } else if (referenceElements.count > 1) {
-      __GREYAssert(NO, @"More than one element matches the reference matcher: %@",
+      I_GREYAssert(NO, @"More than one element matches the reference matcher: %@",
                    referenceElements);
     }
 
     id referenceElement = [referenceElements firstObject];
     if (!referenceElement) {
-      __GREYAssert(NO, @"Could not find reference element.");
+      I_GREYAssert(NO, @"Could not find reference element.");
     }
 
     for (GREYLayoutConstraint *constraint in constraints) {
@@ -655,6 +683,10 @@ id<GREYMatcher> grey_enabled(void) {
   return [GREYMatchers matcherForEnabledElement];
 }
 
+id<GREYMatcher> grey_userInteractionEnabled(void) {
+  return [GREYMatchers matcherForUserInteractionEnabled];
+}
+
 id<GREYMatcher> grey_layout(NSArray *constraints, id<GREYMatcher> referenceElementMatcher) {
   return [GREYMatchers matcherForConstraints:constraints
                   toReferenceElementMatching:referenceElementMatcher];
@@ -674,6 +706,22 @@ id<GREYMatcher> grey_switchWithOnState(BOOL on) {
 
 id<GREYMatcher> grey_closeTo(double value, double delta) {
   return [GREYMatchers matcherForCloseTo:value delta:delta];
+}
+
+id<GREYMatcher> grey_anything(void) {
+  return [GREYMatchers matcherForAnything];
+}
+
+id<GREYMatcher> grey_equalTo(id value) {
+  return [GREYMatchers matcherForEqualTo:value];
+}
+
+id<GREYMatcher> grey_lessThan(id value) {
+  return [GREYMatchers matcherForLessThan:value];
+}
+
+id<GREYMatcher> grey_greaterThan(id value) {
+  return [GREYMatchers matcherForGreaterThan:value];
 }
 
 #endif // GREY_DISABLE_SHORTHAND

@@ -16,7 +16,7 @@
 
 #import "Core/GREYKeyboard.h"
 
-#import <objc/runtime.h>
+#include <objc/runtime.h>
 
 #import "Action/GREYTapAction.h"
 #import "Additions/NSError+GREYAdditions.h"
@@ -34,7 +34,7 @@
 static GREYTapAction *gTapKeyAction;
 
 /**
- *  Flag set to @c YES when is keyboard, @c NO when keyboard is hidden.
+ *  Flag set to @c YES when the keyboard is shown, @c NO when keyboard is hidden.
  */
 static BOOL gIsKeyboardShown = NO;
 

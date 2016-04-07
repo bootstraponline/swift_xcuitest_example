@@ -1,1 +1,1 @@
-github "google/EarlGrey" ~> 1.0.0
+github "google/EarlGrey" "master"

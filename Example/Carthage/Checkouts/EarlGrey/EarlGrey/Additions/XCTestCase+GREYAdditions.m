@@ -16,10 +16,11 @@
 
 #import "Additions/XCTestCase+GREYAdditions.h"
 
-#import <objc/runtime.h>
+#include <objc/runtime.h>
 
 #import "Common/GREYPrivate.h"
 #import "Common/GREYSwizzler.h"
+#import "Exception/GREYFrameworkException.h"
 #import "Synchronization/GREYAppStateTracker.h"
 #import "Synchronization/GREYUIThreadExecutor.h"
 
@@ -48,6 +49,11 @@ static const void *const kLocalizedTestOutputsDirKey = &kLocalizedTestOutputsDir
  *  Object-association key for the status of a test case.
  */
 static const void *const kTestCaseStatus = &kTestCaseStatus;
+
+/**
+ *  Name of the exception that's thrown to interrupt current test execution.
+ */
+static NSString *const kInternalTestInterruptException = @"EarlGreyInternalTestInterruptException";
 
 /**
  *  Enumeration with the possible statuses of a XCTestCase.
@@ -160,6 +166,11 @@ NSString *const kGREYXCTestCaseNotificationKey = @"GREYXCTestCaseNotificationKey
   return localizedTestOutputsDir;
 }
 
+- (void)grey_interruptExecution {
+  [[GREYFrameworkException exceptionWithName:kInternalTestInterruptException
+                                      reason:@"Immediately halt execution of testcase"] raise];
+}
+
 #pragma mark - Private
 
 - (BOOL)grey_isSwizzled {
@@ -192,23 +203,6 @@ NSString *const kGREYXCTestCaseNotificationKey = @"GREYXCTestCaseNotificationKey
                  andReplaceWithInstanceMethod:@selector(tearDown)];
       NSAssert(swizzleSuccess, @"Cannot swizzle %@ tearDown", NSStringFromClass(selfClass));
       [self grey_markSwizzled];
-
-      // Swizzle recordFailureWithDescription:inFile:atLine:expected: to detect failures that may
-      // not throw exceptions.
-      SEL recordFailureSelector =
-          @selector(recordFailureWithDescription:inFile:atLine:expected:);
-      SEL ituRecordFailureSelector =
-          @selector(grey_recordFailureWithDescription:inFile:atLine:expected:);
-      IMP ituRecordFailureIMP = [self methodForSelector:ituRecordFailureSelector];
-
-      swizzleSuccess = [swizzler swizzleClass:selfClass
-                            addInstanceMethod:ituRecordFailureSelector
-                           withImplementation:ituRecordFailureIMP
-                 andReplaceWithInstanceMethod:recordFailureSelector];
-      NSAssert(swizzleSuccess, @"Cannot swizzle %@ %@", NSStringFromSelector(recordFailureSelector),
-               NSStringFromClass(selfClass));
-
-      [self grey_markSwizzled];
     }
 
     @try {
@@ -221,8 +215,7 @@ NSString *const kGREYXCTestCaseNotificationKey = @"GREYXCTestCaseNotificationKey
           [self grey_createDirRemovingExistingDir:[self grey_localizedTestOutputsDirectory]
                                             error:&error];
 
-      NSAssert(success, @"Failed to create localized outputs directory. Cause: %@", error);
-
+      NSAssert(success, @"Failed to create localized outputs directory with error: %@", error);
       INVOKE_ORIGINAL_IMP(void, @selector(grey_invokeTest));
 
       // The test may have been marked as failed if a failure was recorded with the
@@ -233,7 +226,9 @@ NSString *const kGREYXCTestCaseNotificationKey = @"GREYXCTestCaseNotificationKey
       }
     } @catch(NSException *exception) {
       [self grey_setStatus:kGREYXCTestCaseStatusFailed];
-      @throw;
+      if (![exception.name isEqualToString:kInternalTestInterruptException]) {
+        [exception raise];
+      }
     } @finally {
       switch ([self grey_status]) {
         case kGREYXCTestCaseStatusFailed:
@@ -291,26 +286,6 @@ NSString *const kGREYXCTestCaseNotificationKey = @"GREYXCTestCaseNotificationKey
 }
 
 /**
- *  Changes the test status when a failure is recorded so we're able to send a failure notification
- *  if for some reason the test fails without throwing an exception.
- *
- *  @param description Description of the failure.
- *  @param filePath    Path to the file where the failure has occured.
- *  @param lineNumber  Line number to the file at @c filePath where the failure has occured.
- *  @param expected    A @c BOOL indicating if the failure was actually expected.
- */
-- (void)grey_recordFailureWithDescription:(NSString *)description
-                                   inFile:(NSString *)filePath
-                                   atLine:(NSUInteger)lineNumber
-                                 expected:(BOOL)expected {
-  [self grey_setStatus:kGREYXCTestCaseStatusFailed];
-  [self grey_recordFailureWithDescription:description
-                                   inFile:filePath
-                                   atLine:lineNumber
-                                 expected:expected];
-}
-
-/**
  *  Sets the object-association value for the test status.
  *
  *  @param status The new object-association value for the test status.
@@ -365,3 +340,4 @@ NSString *const kGREYXCTestCaseNotificationKey = @"GREYXCTestCaseNotificationKey
 }
 
 @end
+

@@ -15,7 +15,7 @@
 //
 
 public func EarlGrey() -> EarlGreyImpl {
-  return EarlGreyImpl.invokedFromFile(__FILE__, lineNumber: __LINE__)
+  return EarlGreyImpl.invokedFromFile(#file, lineNumber: #line)
 }
 
 public func GREYAssert(@autoclosure expression: () -> BooleanType, reason: String) {
@@ -24,14 +24,14 @@ public func GREYAssert(@autoclosure expression: () -> BooleanType, reason: Strin
 
 public func GREYAssertTrue(@autoclosure expression: () -> BooleanType, reason: String) {
   GREYAssert(expression().boolValue,
-             reason,
-             details: "Expected the boolean expression to be true")
+    reason,
+    details: "Expected the boolean expression to be true")
 }
 
 public func GREYAssertFalse(@autoclosure expression: () -> BooleanType, reason: String) {
   GREYAssert(!expression().boolValue,
-             reason,
-             details: "Expected the boolean expression to be true")
+    reason,
+    details: "Expected the boolean expression to be true")
 }
 
 public func GREYAssertNotNil(@autoclosure expression: () -> Any?, reason: String) {
@@ -49,12 +49,14 @@ public func GREYAssertEqual<T : Equatable>(@autoclosure left: () -> T?,
 
 public func GREYFail(reason: String) {
   greyFailureHandler.handleException(GREYFrameworkException(name: kGREYAssertionFailedException,
-    reason: reason), details: "")
+    reason: reason),
+    details: "")
 }
 
 public func GREYFail(reason: String, details: String) {
   greyFailureHandler.handleException(GREYFrameworkException(name: kGREYAssertionFailedException,
-    reason: reason), details: details)
+    reason: reason),
+    details: details)
 }
 
 private func GREYAssert(@autoclosure expression: () -> BooleanType,
@@ -62,12 +64,15 @@ private func GREYAssert(@autoclosure expression: () -> BooleanType,
   GREYSetCurrentAsFailable()
   if !expression().boolValue {
     greyFailureHandler.handleException(GREYFrameworkException(name: kGREYAssertionFailedException,
-      reason: reason), details: details)
+      reason: reason),
+      details: details)
   }
 }
 
 private func GREYSetCurrentAsFailable() {
-  if greyFailureHandler.respondsToSelector(Selector("setInvocationFile:andInvocationLine:")) {
-    greyFailureHandler.setInvocationFile!(__FILE__, andInvocationLine: __LINE__)
+  let greyFailureHandlerSelector =
+      #selector(GREYFailureHandler.setInvocationFile(_:andInvocationLine:))
+  if greyFailureHandler.respondsToSelector(greyFailureHandlerSelector) {
+    greyFailureHandler.setInvocationFile!(#file, andInvocationLine: #line)
   }
 }
