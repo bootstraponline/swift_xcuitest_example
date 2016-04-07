@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D62638D71CB6B16100E3950D /* ExampleEarlGrey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62638D61CB6B16100E3950D /* ExampleEarlGrey.swift */; };
+		D62638DF1CB6B19000E3950D /* EarlGrey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62638DE1CB6B19000E3950D /* EarlGrey.swift */; };
+		D62638E21CB6B22700E3950D /* EarlGrey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D62638E11CB6B22700E3950D /* EarlGrey.framework */; };
+		D62638E81CB6C0A000E3950D /* EarlGrey.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D62638E71CB6C0A000E3950D /* EarlGrey.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		F98C3B8B1C65354100389099 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98C3B8A1C65354100389099 /* AppDelegate.swift */; };
 		F98C3B8D1C65354100389099 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98C3B8C1C65354100389099 /* ViewController.swift */; };
 		F98C3B901C65354100389099 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F98C3B8E1C65354100389099 /* Main.storyboard */; };
@@ -16,6 +20,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D62638D91CB6B16100E3950D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F98C3B7F1C65354100389099 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F98C3B861C65354100389099;
+			remoteInfo = Example;
+		};
 		F98C3B9C1C65354100389099 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F98C3B7F1C65354100389099 /* Project object */;
@@ -25,8 +36,28 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		D62638E61CB6C06500E3950D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(TEST_HOST)/..";
+			dstSubfolderSpec = 0;
+			files = (
+				D62638E81CB6C0A000E3950D /* EarlGrey.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		399BD0F4F8B7F4C0221A733D /* EarlGrey.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EarlGrey.framework; path = "${SRCROOT}/Pods/EarlGrey/EarlGrey-1.0.0/EarlGrey.framework"; sourceTree = SRCROOT; };
+		D62638D41CB6B16100E3950D /* ExampleEarlGrey.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExampleEarlGrey.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D62638D61CB6B16100E3950D /* ExampleEarlGrey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleEarlGrey.swift; sourceTree = "<group>"; };
+		D62638D81CB6B16100E3950D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D62638DE1CB6B19000E3950D /* EarlGrey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarlGrey.swift; sourceTree = "<group>"; };
+		D62638E01CB6B1A500E3950D /* bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bridge.h; sourceTree = "<group>"; };
+		D62638E11CB6B22700E3950D /* EarlGrey.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EarlGrey.framework; path = Carthage/Build/iOS/EarlGrey.framework; sourceTree = "<group>"; };
+		D62638E71CB6C0A000E3950D /* EarlGrey.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EarlGrey.framework; path = Carthage/Build/iOS/EarlGrey.framework; sourceTree = "<group>"; };
 		F98C3B871C65354100389099 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F98C3B8A1C65354100389099 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F98C3B8C1C65354100389099 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -40,6 +71,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D62638D11CB6B16100E3950D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D62638E21CB6B22700E3950D /* EarlGrey.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F98C3B841C65354100389099 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -60,15 +99,29 @@
 		576CA8B58360652E4391929F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D62638E11CB6B22700E3950D /* EarlGrey.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D62638D51CB6B16100E3950D /* ExampleEarlGrey */ = {
+			isa = PBXGroup;
+			children = (
+				D62638D61CB6B16100E3950D /* ExampleEarlGrey.swift */,
+				D62638D81CB6B16100E3950D /* Info.plist */,
+				D62638DE1CB6B19000E3950D /* EarlGrey.swift */,
+				D62638E01CB6B1A500E3950D /* bridge.h */,
+			);
+			path = ExampleEarlGrey;
 			sourceTree = "<group>";
 		};
 		F98C3B7E1C65354100389099 = {
 			isa = PBXGroup;
 			children = (
+				D62638E71CB6C0A000E3950D /* EarlGrey.framework */,
 				F98C3B891C65354100389099 /* Example */,
 				F98C3B9E1C65354100389099 /* ExampleUITests */,
+				D62638D51CB6B16100E3950D /* ExampleEarlGrey */,
 				F98C3B881C65354100389099 /* Products */,
 				576CA8B58360652E4391929F /* Frameworks */,
 			);
@@ -80,6 +133,7 @@
 				F98C3B871C65354100389099 /* Example.app */,
 				F98C3B9B1C65354100389099 /* ExampleUITests.xctest */,
 				399BD0F4F8B7F4C0221A733D /* EarlGrey.framework */,
+				D62638D41CB6B16100E3950D /* ExampleEarlGrey.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -109,6 +163,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		D62638D31CB6B16100E3950D /* ExampleEarlGrey */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D62638DB1CB6B16100E3950D /* Build configuration list for PBXNativeTarget "ExampleEarlGrey" */;
+			buildPhases = (
+				D62638E51CB6B53600E3950D /* ShellScript */,
+				D62638E61CB6C06500E3950D /* CopyFiles */,
+				D62638D01CB6B16100E3950D /* Sources */,
+				D62638D11CB6B16100E3950D /* Frameworks */,
+				D62638D21CB6B16100E3950D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D62638DA1CB6B16100E3950D /* PBXTargetDependency */,
+			);
+			name = ExampleEarlGrey;
+			productName = ExampleEarlGrey;
+			productReference = D62638D41CB6B16100E3950D /* ExampleEarlGrey.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		F98C3B861C65354100389099 /* Example */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F98C3BA41C65354100389099 /* Build configuration list for PBXNativeTarget "Example" */;
@@ -150,10 +224,14 @@
 		F98C3B7F1C65354100389099 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = example;
 				TargetAttributes = {
+					D62638D31CB6B16100E3950D = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = F98C3B861C65354100389099;
+					};
 					F98C3B861C65354100389099 = {
 						CreatedOnToolsVersion = 7.3;
 					};
@@ -178,11 +256,19 @@
 			targets = (
 				F98C3B861C65354100389099 /* Example */,
 				F98C3B9A1C65354100389099 /* ExampleUITests */,
+				D62638D31CB6B16100E3950D /* ExampleEarlGrey */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D62638D21CB6B16100E3950D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F98C3B851C65354100389099 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -202,7 +288,33 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		D62638E51CB6B53600E3950D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/EarlGrey.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		D62638D01CB6B16100E3950D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D62638DF1CB6B19000E3950D /* EarlGrey.swift in Sources */,
+				D62638D71CB6B16100E3950D /* ExampleEarlGrey.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F98C3B831C65354100389099 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -223,6 +335,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		D62638DA1CB6B16100E3950D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F98C3B861C65354100389099 /* Example */;
+			targetProxy = D62638D91CB6B16100E3950D /* PBXContainerItemProxy */;
+		};
 		F98C3B9D1C65354100389099 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F98C3B861C65354100389099 /* Example */;
@@ -250,6 +367,55 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		D62638DC1CB6B16100E3950D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(SRCROOT)/Carthage/Build/iOS",
+				);
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(SRCROOT)/Carthage/Build/iOS",
+				);
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS/**";
+				INFOPLIST_FILE = ExampleEarlGrey/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bootstraponline.ExampleEarlGrey;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(TARGET_NAME)/bridge.h";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Example.app/Example";
+				USE_HEADERMAP = YES;
+			};
+			name = Debug;
+		};
+		D62638DD1CB6B16100E3950D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/Carthage/Build/iOS",
+				);
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "$(SRCROOT)/Carthage/Build/iOS";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/Carthage/Build/iOS/**";
+				INFOPLIST_FILE = ExampleEarlGrey/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bootstraponline.ExampleEarlGrey;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(TARGET_NAME)/bridge.h";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Example.app/Example";
+				USE_HEADERMAP = YES;
+			};
+			name = Release;
+		};
 		F98C3BA21C65354100389099 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -380,6 +546,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D62638DB1CB6B16100E3950D /* Build configuration list for PBXNativeTarget "ExampleEarlGrey" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D62638DC1CB6B16100E3950D /* Debug */,
+				D62638DD1CB6B16100E3950D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		F98C3B821C65354100389099 /* Build configuration list for PBXProject "Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
