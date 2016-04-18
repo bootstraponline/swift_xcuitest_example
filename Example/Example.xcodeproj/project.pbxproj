@@ -171,7 +171,6 @@
 				D62638E61CB6C06500E3950D /* CopyFiles */,
 				D62638D01CB6B16100E3950D /* Sources */,
 				D62638D11CB6B16100E3950D /* Frameworks */,
-				D62638D21CB6B16100E3950D /* Resources */,
 			);
 			buildRules = (
 			);
@@ -262,13 +261,6 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		D62638D21CB6B16100E3950D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F98C3B851C65354100389099 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -553,6 +545,7 @@
 				D62638DD1CB6B16100E3950D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F98C3B821C65354100389099 /* Build configuration list for PBXProject "Example" */ = {
 			isa = XCConfigurationList;
