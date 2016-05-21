@@ -12,20 +12,41 @@
 		F98C3B901C65354100389099 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F98C3B8E1C65354100389099 /* Main.storyboard */; };
 		F98C3B921C65354100389099 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F98C3B911C65354100389099 /* Assets.xcassets */; };
 		F98C3B951C65354100389099 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F98C3B931C65354100389099 /* LaunchScreen.storyboard */; };
+		F9BC1C971CEFB77F00FE2BB8 /* AutoEarlGrey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BC1C961CEFB77F00FE2BB8 /* AutoEarlGrey.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		F9BC1C991CEFB77F00FE2BB8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F98C3B7F1C65354100389099 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F98C3B861C65354100389099;
+			remoteInfo = Example;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		F98C3B871C65354100389099 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = Example.app; path = "/Users/medwards/code/swift_xcuitest_example/Example/build/Debug-iphoneos/Example.app"; sourceTree = "<absolute>"; };
 		F98C3B8A1C65354100389099 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F98C3B8C1C65354100389099 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F98C3B8F1C65354100389099 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F98C3B911C65354100389099 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F98C3B941C65354100389099 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F98C3B961C65354100389099 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F9BC1C8F1CEFB73600FE2BB8 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9BC1C941CEFB77F00FE2BB8 /* AutoEarlGrey.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AutoEarlGrey.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9BC1C961CEFB77F00FE2BB8 /* AutoEarlGrey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoEarlGrey.swift; sourceTree = "<group>"; };
+		F9BC1C981CEFB77F00FE2BB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		F98C3B841C65354100389099 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9BC1C911CEFB77F00FE2BB8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -39,6 +60,9 @@
 			isa = PBXGroup;
 			children = (
 				F98C3B891C65354100389099 /* Example */,
+				F9BC1C8F1CEFB73600FE2BB8 /* Example.app */,
+				F9BC1C941CEFB77F00FE2BB8 /* AutoEarlGrey.xctest */,
+				F9BC1C951CEFB77F00FE2BB8 /* AutoEarlGrey */,
 			);
 			sourceTree = "<group>";
 		};
@@ -53,6 +77,15 @@
 				F98C3B961C65354100389099 /* Info.plist */,
 			);
 			path = Example;
+			sourceTree = "<group>";
+		};
+		F9BC1C951CEFB77F00FE2BB8 /* AutoEarlGrey */ = {
+			isa = PBXGroup;
+			children = (
+				F9BC1C961CEFB77F00FE2BB8 /* AutoEarlGrey.swift */,
+				F9BC1C981CEFB77F00FE2BB8 /* Info.plist */,
+			);
+			path = AutoEarlGrey;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -72,8 +105,26 @@
 			);
 			name = Example;
 			productName = Example;
-			productReference = F98C3B871C65354100389099 /* Example.app */;
+			productReference = F9BC1C8F1CEFB73600FE2BB8 /* Example.app */;
 			productType = "com.apple.product-type.application";
+		};
+		F9BC1C931CEFB77F00FE2BB8 /* AutoEarlGrey */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F9BC1C9D1CEFB77F00FE2BB8 /* Build configuration list for PBXNativeTarget "AutoEarlGrey" */;
+			buildPhases = (
+				F9BC1C901CEFB77F00FE2BB8 /* Sources */,
+				F9BC1C911CEFB77F00FE2BB8 /* Frameworks */,
+				F9BC1C921CEFB77F00FE2BB8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F9BC1C9A1CEFB77F00FE2BB8 /* PBXTargetDependency */,
+			);
+			name = AutoEarlGrey;
+			productName = AutoEarlGrey;
+			productReference = F9BC1C941CEFB77F00FE2BB8 /* AutoEarlGrey.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -87,6 +138,10 @@
 				TargetAttributes = {
 					F98C3B861C65354100389099 = {
 						CreatedOnToolsVersion = 7.3;
+					};
+					F9BC1C931CEFB77F00FE2BB8 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = F98C3B861C65354100389099;
 					};
 				};
 			};
@@ -104,6 +159,7 @@
 			projectRoot = "";
 			targets = (
 				F98C3B861C65354100389099 /* Example */,
+				F9BC1C931CEFB77F00FE2BB8 /* AutoEarlGrey */,
 			);
 		};
 /* End PBXProject section */
@@ -119,6 +175,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F9BC1C921CEFB77F00FE2BB8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -131,7 +194,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F9BC1C901CEFB77F00FE2BB8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9BC1C971CEFB77F00FE2BB8 /* AutoEarlGrey.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F9BC1C9A1CEFB77F00FE2BB8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F98C3B861C65354100389099 /* Example */;
+			targetProxy = F9BC1C991CEFB77F00FE2BB8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		F98C3B8E1C65354100389099 /* Main.storyboard */ = {
@@ -258,6 +337,34 @@
 			};
 			name = Release;
 		};
+		F9BC1C9B1CEFB77F00FE2BB8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				INFOPLIST_FILE = AutoEarlGrey/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bootstraponline.AutoEarlGrey;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Example.app/Example";
+			};
+			name = Debug;
+		};
+		F9BC1C9C1CEFB77F00FE2BB8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				INFOPLIST_FILE = AutoEarlGrey/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bootstraponline.AutoEarlGrey;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Example.app/Example";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -278,6 +385,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		F9BC1C9D1CEFB77F00FE2BB8 /* Build configuration list for PBXNativeTarget "AutoEarlGrey" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F9BC1C9B1CEFB77F00FE2BB8 /* Debug */,
+				F9BC1C9C1CEFB77F00FE2BB8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
