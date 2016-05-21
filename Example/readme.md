@@ -13,7 +13,7 @@ carthage update EarlGrey --platform ios
 
 # Checkout deps as defined in Cartfile.resolved. 
 # Fails if Cartfile.resolved doesn't exist
-carthage checkout
+carthage checkout --no-use-binaries
 ```
 
 Configure Objective-C Bridging Header:
